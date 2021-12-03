@@ -20,6 +20,6 @@
   "homepage": "https://github.com/YieldingExploiter/rgf2#readme",
   "dependencies": {},
   "devDependencies": {
-    "node": "^16.13.0"
+    "node": ">16.13.0 <18"
   }
 }
