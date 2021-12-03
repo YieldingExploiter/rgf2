@@ -3,11 +3,8 @@ const axios = require('axios')
 const getGroup = async (id) => {
   return (await axios.get('https://groups.roblox.com/v1/groups/' + id)).data
 }
-
-const rate = 1 // groups / second
-
 const { Webhook } = require('discord-webhook-node')
-const startThread = async ({ webhook, thread }, isDirectThread) => {
+const startThread = async ({ webhook, thread, rate }, isDirectThread) => {
   const hook = new Webhook(webhook);
   const tid = thread + 1;
   await hook.send(`[THREAD ${thread}] Starting...`);
