@@ -43,7 +43,7 @@ const startThread = async ({ webhook, thread }, isDirectThread) => {
       hook.send(y);
     } catch (e) {
       console.error(e);
-      hook.send(`[THREAD ${tid}] ERROR!\n${e}\nIGNORING FOR 20 RUNS`)
+      hook.send(`[THREAD ${tid}] ERROR!\n${e}\nIGNORING FOR 30 RUNS`)
       ignore=30
     }
   }, (1 / rate) * 1000)
