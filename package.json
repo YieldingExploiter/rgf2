@@ -5,20 +5,25 @@
   "main": "finder.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node finder.js"
+    "start": "node finder.js",
+    "node": "node"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YieldingExploiter/rgf2.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "YieldingCoder [@YieldingExploiter] <thatonecoderuwu@gmail.com>",
+  "license": "AGPL-3.0-OR-LATER",
   "bugs": {
     "url": "https://github.com/YieldingExploiter/rgf2/issues"
   },
   "homepage": "https://github.com/YieldingExploiter/rgf2#readme",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.24.0",
+    "discord-webhook-node": "^1.1.8",
+    "threads": "^1.7.0"
+  },
   "devDependencies": {
     "node": ">16.13.0 <18"
   }
