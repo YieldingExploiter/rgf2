@@ -1,6 +1,9 @@
 # rgf2
 A Roblox Group Finder
 
+Now with mutlithreading!
+
+----
 
 funny image from while i was developing this:
 
