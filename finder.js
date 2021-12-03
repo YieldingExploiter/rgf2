@@ -1,0 +1,1 @@
+console.log(`Node ${process.env.NODE_VERSION}`)

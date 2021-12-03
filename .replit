@@ -1,2 +1,2 @@
 language = "nodejs"
-run = "node finder.js"
+run = "npm start"

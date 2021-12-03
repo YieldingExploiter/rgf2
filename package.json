@@ -1,0 +1,25 @@
+{
+  "name": "rgf2",
+  "version": "1.0.0",
+  "description": "A Roblox Group Finder",
+  "main": "finder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node finder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YieldingExploiter/rgf2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YieldingExploiter/rgf2/issues"
+  },
+  "homepage": "https://github.com/YieldingExploiter/rgf2#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "node": "^16.13.0"
+  }
+}
