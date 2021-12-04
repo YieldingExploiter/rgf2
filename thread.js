@@ -27,7 +27,7 @@ const startThread = async ({ webhook, thread, rate }, isDirectThread) => {
       i++;
       if (i >= 25) {
         i = 0;
-        //hook.send(`[THREAD ${thread}] Randomizing ID...`)
+        //hook.send(`${getPref()} Randomizing ID...`)
         upID();
       } else {
         id = id + 1;
