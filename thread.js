@@ -15,36 +15,39 @@ const startThread = async ({ webhook, thread, rate }, isDirectThread) => {
 
   let ignore = 0;
 
+  const getPref = ()=>`[THREAD ${thread} - ID ${id} / I ${i}]`
+
   setInterval(async () => {
     try {
       if (ignore > 0) {
         ignore--;
-        console.log(`[THREAD ${thread}] IGNORED RUN - ${ignore} IGNORES LEFT`)
+        console.log(`${getPref()} IGNORED RUN - ${ignore} IGNORES LEFT`)
         return;
       };
       i++;
       if (i >= 25) {
         i = 0;
-        hook.send(`[THREAD ${thread}] Randomizing ID...`)
+        //hook.send(`[THREAD ${thread}] Randomizing ID...`)
         upID();
       } else {
         id = id + 1;
       }
       const group = (await getGroup(id))
-      if (group.owner) return console.log(`[THREAD ${thread}] Group ${id} has an owner already!`);
-      if (group.publicEntryAllowed === false) return console.log(`[THREAD ${thread}] Group ${id} is locked!`);
+      if (group.owner) return console.log(`${getPref()} Group ${id} has an owner already!`);
+      if (group.publicEntryAllowed === false) return console.log(`${getPref()}Group ${id} is locked!`);
       console.log('FOUND!!!' + id)
-      const y = (`[THREAD ${thread}] GROUP FOUND!\n>>> ID: ${id}\nNAME: ${group.name}\nDESCRIPTION: ${group.description}\nISBCONLY: ${group.isBuildersClubOnly} (if its true ill be suprised)` + (shout ? `\nSHOUT: \`${group.shout.body}\` Posted by ${group.shout.displayName} (${group.shout.username}/${group.shout.userId})` : '') + `\nLINK: https://roblox.com/groups/${group.id}/​`)
+      const y = (`${getPref()} GROUP FOUND!\n>>> ID: ${id}\nNAME: ${group.name}\nDESCRIPTION: ${group.description}\nISBCONLY: ${group.isBuildersClubOnly} (if its true ill be suprised)` + (shout ? `\nSHOUT: \`${group.shout.body}\` Posted by ${group.shout.displayName} (${group.shout.username}/${group.shout.userId})` : '') + `\nLINK: https://roblox.com/groups/${group.id}/​`)
       console.log(y);
       hook.send(y);
     } catch (e) {
-      console.error(`[THREAD ${thread} - ID ${id} / I ${i}]`,e.toString());
+      console.error(getPref(),e.toString());
       if (e.toString().includes('429')) {
         ignore = 120
+        console.log(`${getPref()} ERROR 429!\n${' '.repeat(`${getPref()} `.length)}${e}\n${' '.repeat(`${getPref()} `.length)}IGNORING FOR ${ignore} RUNS`)
       } else {
         ignore = 3
+        hook.send(`${getPref()} ERROR!\n${e}\nIGNORING FOR ${ignore} RUNS`)
       }
-      hook.send(`[THREAD ${thread}] ERROR!\n${e}\nIGNORING FOR ${ignore} RUNS`)
     }
   }, (1 / Number(rate)) * 1000)
 };
