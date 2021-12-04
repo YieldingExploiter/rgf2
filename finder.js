@@ -22,4 +22,4 @@ let interval = setInterval(async () => {
   _thread.startThread({
     webhook, thread, rate
   });
-}, 1000)
+}, 2000)

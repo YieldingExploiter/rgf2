@@ -10,9 +10,8 @@ const startThread = async ({ webhook, thread, rate }, isDirectThread) => {
   let id;
 
   const upID = () => { id = Math.floor(Math.random() * (10000000 - 1000) + 1000) };
-  upID();
 
-  let i = 0;
+  let i = 25;
 
   let ignore = 0;
 
@@ -24,8 +23,9 @@ const startThread = async ({ webhook, thread, rate }, isDirectThread) => {
         return;
       };
       i++;
-      if (i > 5) {
+      if (i >= 25) {
         i = 0;
+        hook.send(`[THREAD ${thread}] Randomizing ID...`)
         upID();
       } else {
         id = id + 1;
@@ -38,8 +38,12 @@ const startThread = async ({ webhook, thread, rate }, isDirectThread) => {
       console.log(y);
       hook.send(y);
     } catch (e) {
-      console.error(e);
-      ignore=60
+      console.error(`[THREAD ${thread} - ID ${id} / I ${i}]`,e.toString());
+      if (e.toString().includes('429')) {
+        ignore = 120
+      } else {
+        ignore = 3
+      }
       hook.send(`[THREAD ${thread}] ERROR!\n${e}\nIGNORING FOR ${ignore} RUNS`)
     }
   }, (1 / Number(rate)) * 1000)
